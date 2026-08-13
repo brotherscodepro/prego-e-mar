@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prego & Mar · Algueirão-Mem Martins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ocean:   #1B3D5C;
+  --tide:    #2E6E9E;
+  --salt:    #F4F7FA;
+  --linen:   #FDFBF8;
+  --sand:    #E8DFD0;
+  --rust:    #C4541E;
+  --ink:     #0F1E2D;
+  --mist:    #7B98B2;
+  --white:   #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--linen);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 2.5rem;
+  background: var(--linen);
+  border-bottom: 1px solid var(--sand);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--ocean);
+  letter-spacing: 0.02em;
+}
+.nav-logo span { font-style: italic; font-weight: 300; color: var(--rust); }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  color: var(--mist);
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ocean); }
+.nav-cta {
+  border: 1.5px solid var(--ocean);
+  color: var(--ocean);
+  padding: 0.5rem 1.3rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s;
+  border-radius: 1px;
+}
+.nav-cta:hover { background: var(--ocean); color: var(--white); }
+
+/* ── HERO — editorial grid ── */
+.hero {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 60px);
+}
+.hero-left {
+  background: var(--ocean);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 4rem 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    url('https://tb-static.uber.com/prod/image-proc/processed_images/19c5c5daa354049b8141de80f19afdee/e39556ef1e4c4565bc6c7dbd8b90869c.jpeg') center/cover;
+  opacity: 0.28;
+}
+.hero-eyebrow {
+  position: relative;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 1.2rem;
+}
+.hero-left h1 {
+  position: relative;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 0.3rem;
+}
+.hero-left h1 strong {
+  font-weight: 600;
+  font-style: italic;
+  color: #A8D4F0;
+  display: block;
+}
+.hero-left p {
+  position: relative;
+  color: rgba(255,255,255,0.55);
+  font-size: 0.9rem;
+  font-weight: 300;
+  margin-top: 1.5rem;
+  max-width: 340px;
+  line-height: 1.7;
+}
+.hero-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 0.6rem 1rem;
+  border-radius: 2px;
+}
+.hero-badge .score {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #A8D4F0;
+  line-height: 1;
+}
+.hero-badge .stars { color: #A8D4F0; font-size: 0.85rem; }
+.hero-badge .label { color: rgba(255,255,255,0.45); font-size: 0.7rem; letter-spacing: 0.06em; }
+
+.hero-right {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+.hero-img-top {
+  background: url('https://tb-static.uber.com/prod/image-proc/processed_images/19c5c5daa354049b8141de80f19afdee/e39556ef1e4c4565bc6c7dbd8b90869c.jpeg') center/cover;
+  position: relative;
+}
+.hero-img-top::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(27,61,92,0.15), transparent);
+}
+.hero-info-panel {
+  background: var(--salt);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem 3rem;
+  gap: 1.2rem;
+  border-top: 3px solid var(--rust);
+}
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--ocean);
+  font-size: 0.85rem;
+}
+.info-row svg { color: var(--rust); flex-shrink: 0; }
+.info-cta {
+  margin-top: 0.5rem;
+  display: inline-block;
+  background: var(--rust);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 1px;
+  transition: background 0.2s;
+  align-self: flex-start;
+}
+.info-cta:hover { background: #a8451a; }
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 2.5rem;
+  margin: 4rem auto;
+  max-width: 1100px;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--sand);
+}
+.divider-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--mist);
+  white-space: nowrap;
+}
+
+/* ── EMENTA ── */
+#ementa {
+  padding: 0 2.5rem 5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.ementa-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.section-kicker {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rust);
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--ocean);
+  line-height: 1.1;
+}
+.menu-tabs {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.tab {
+  background: none;
+  border: 1px solid var(--sand);
+  color: var(--mist);
+  padding: 0.45rem 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  border-radius: 1px;
+  transition: all 0.2s;
+}
+.tab.active, .tab:hover {
+  border-color: var(--ocean);
+  color: var(--ocean);
+  background: var(--salt);
+}
+.menu-panel { display: none; }
+.menu-panel.active { display: block; }
+
+/* Dotted list style (como o Brasa era diferente — aqui usamos colunas abertas) */
+.menu-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 4rem;
+}
+.menu-entry {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--sand);
+  gap: 1rem;
+}
+.menu-entry:last-child { border-bottom: none; }
+.entry-left { flex: 1; }
+.entry-name {
+  font-size: 0.95rem;
+  color: var(--ink);
+  font-weight: 400;
+  margin-bottom: 0.2rem;
+}
+.entry-desc {
+  font-size: 0.78rem;
+  color: var(--mist);
+  font-weight: 300;
+}
+.entry-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ocean);
+  white-space: nowrap;
+}
+.pop { 
+  display: inline-block;
+  background: var(--rust);
+  color: #fff;
+  font-size: 0.58rem;
+  padding: 2px 5px;
+  border-radius: 1px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ── CRÍTICAS ── */
+#criticas {
+  background: var(--ocean);
+  padding: 5rem 2.5rem;
+}
+.criticas-inner { max-width: 1100px; margin: 0 auto; }
+#criticas .section-title { color: var(--white); }
+#criticas .section-kicker { color: #A8D4F0; }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.review-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 1.75rem;
+  border-radius: 1px;
+  display: flex;
+  flex-direction: column;
+}
+.review-stars { color: #A8D4F0; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 3px; }
+.review-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 1.2rem;
+}
+.review-author {
+  font-size: 0.72rem;
+  color: var(--mist);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── CONTACTO ── */
+#contacto {
+  padding: 5rem 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: start;
+}
+.contact-block { margin-bottom: 2rem; }
+.contact-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--mist);
+  margin-bottom: 0.4rem;
+}
+.contact-value {
+  font-size: 1rem;
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 1.6;
+}
+.contact-value a { color: var(--rust); text-decoration: none; }
+.contact-value a:hover { text-decoration: underline; }
+.hours-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+.hours-table td {
+  padding: 0.55rem 0;
+  font-size: 0.88rem;
+  border-bottom: 1px solid var(--sand);
+  color: var(--ink);
+}
+.hours-table td:last-child { text-align: right; color: var(--mist); }
+.map-frame {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border: none;
+  border-radius: 1px;
+  filter: saturate(0.7) contrast(1.05);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 3rem 2.5rem;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+}
+.footer-logo span { font-style: italic; font-weight: 300; color: var(--mist); }
+footer p {
+  color: rgba(255,255,255,0.25);
+  font-size: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.25rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 7rem 1.5rem 2.5rem; min-height: 60vh; }
+  .hero-right { display: none; }
+  #ementa { padding: 0 1.25rem 3.5rem; }
+  .menu-cols { grid-template-columns: 1fr; }
+  .ementa-header { flex-direction: column; }
+  #criticas { padding: 3.5rem 1.25rem; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  #contacto { padding: 3.5rem 1.25rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .divider { padding: 0 1.25rem; margin: 2.5rem auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Prego <span>& Mar</span></div>
+  <ul class="nav-links">
+    <li><a href="#ementa">Ementa</a></li>
+    <li><a href="#criticas">Críticas</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="tel:215886552" class="nav-cta">Reservar Mesa</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Algueirão · Mem Martins · Sintra</p>
+    <h1>Prego<strong>& Mar</strong></h1>
+    <p>Cozinha portuguesa com alma — da chapa ao mar. Um espaço para saborear sem pressa, com o atendimento que faz voltar.</p>
+    <div class="hero-badge">
+      <div>
+        <div class="score">4.6</div>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="label">581 críticas<br>no Google</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-top"></div>
+    <div class="hero-info-panel">
+      <div class="info-row">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Seg–Dom · 12:00 – 22:00
+      </div>
+      <div class="info-row">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Estr. Mem Martins 67, Algueirão-Mem Martins
+      </div>
+      <div class="info-row">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 9V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2m2 4h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2z"/></svg>
+        15 – 20 € por pessoa · Take Away disponível
+      </div>
+      <a href="tel:215886552" class="info-cta">21 588 6552 · Ligar agora</a>
+    </div>
+  </div>
+</header>
+
+<!-- DIVIDER -->
+<div class="divider"><span class="divider-text">A nossa ementa</span></div>
+
+<!-- EMENTA -->
+<section id="ementa">
+  <div class="ementa-header">
+    <div>
+      <p class="section-kicker">O que servimos</p>
+      <h2 class="section-title">Ementa</h2>
+    </div>
+    <div class="menu-tabs">
+      <button class="tab active" onclick="showTab('entradas', this)">Entradas</button>
+      <button class="tab" onclick="showTab('petiscos', this)">Petiscos</button>
+      <button class="tab" onclick="showTab('chapa', this)">Na Chapa</button>
+      <button class="tab" onclick="showTab('carnes', this)">Carnes</button>
+      <button class="tab" onclick="showTab('sopas', this)">Sopas</button>
+    </div>
+  </div>
+
+  <div id="entradas" class="menu-panel active">
+    <div class="menu-cols">
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Queijo Seco</div>
+          <div class="entry-desc">De textura firme</div>
+        </div>
+        <div class="entry-price">6,50 €</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="petiscos" class="menu-panel">
+    <div class="menu-cols">
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Pica-Pau</div>
+          <div class="entry-desc">Com seu jus</div>
+        </div>
+        <div class="entry-price">12,50 €</div>
+      </div>
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Ovos Mexidos com Farinheira <span class="pop">Popular</span></div>
+          <div class="entry-desc">Com farinheira</div>
+        </div>
+        <div class="entry-price">8,00 €</div>
+      </div>
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Camarões ao Alho</div>
+          <div class="entry-desc">Salteados com alho</div>
+        </div>
+        <div class="entry-price">19,20 €</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="chapa" class="menu-panel">
+    <div class="menu-cols">
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Prego no Prato de Novilho <span class="pop">Mais pedido</span></div>
+          <div class="entry-desc">Sem ovo · batata frita e arroz</div>
+        </div>
+        <div class="entry-price">10,75 €</div>
+      </div>
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Prego no Pão de Novilho</div>
+          <div class="entry-desc">Bife de novilho na chapa, no pão</div>
+        </div>
+        <div class="entry-price">5,00 €</div>
+      </div>
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Prego no Pão de Novilho com Ovo</div>
+          <div class="entry-desc">Com ovo estrelado</div>
+        </div>
+        <div class="entry-price">6,00 €</div>
+      </div>
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Prego no Pão de Peru</div>
+          <div class="entry-desc">Bife de peru na chapa, no pão</div>
+        </div>
+        <div class="entry-price">6,00 €</div>
+      </div>
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Prego no Pão de Peru com Ovo</div>
+          <div class="entry-desc">Com ovo estrelado</div>
+        </div>
+        <div class="entry-price">7,00 €</div>
+      </div>
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Prego no Prato de Peru sem Ovo</div>
+          <div class="entry-desc">Com batata frita e arroz</div>
+        </div>
+        <div class="entry-price">12,25 €</div>
+      </div>
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Prego no Prato de Peru com Ovo</div>
+          <div class="entry-desc">Com batata frita e arroz</div>
+        </div>
+        <div class="entry-price">13,25 €</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="carnes" class="menu-panel">
+    <div class="menu-cols">
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Bife de Vazia à Portuguesa <span class="pop">Popular</span></div>
+          <div class="entry-desc">Vinho branco, manteiga, ovo à cavalo, crocante de presunto · batata frita e arroz</div>
+        </div>
+        <div class="entry-price">22,80 €</div>
+      </div>
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Bife da Vazia com Natas e Pimenta</div>
+          <div class="entry-desc">Com seu jus, natas e pimenta · batata frita e arroz</div>
+        </div>
+        <div class="entry-price">21,50 €</div>
+      </div>
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Bife de Vazia com Mostarda</div>
+          <div class="entry-desc">Com cerveja e mostarda · batata frita e arroz</div>
+        </div>
+        <div class="entry-price">21,50 €</div>
+      </div>
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Bife de Vazia Grelhado</div>
+          <div class="entry-desc">Com batata frita e salada</div>
+        </div>
+        <div class="entry-price">20,50 €</div>
+      </div>
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Lagartos de Porco Preto Grelhados</div>
+          <div class="entry-desc">Com batata frita e salada</div>
+        </div>
+        <div class="entry-price">19,50 €</div>
+      </div>
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Alheira Frita</div>
+          <div class="entry-desc">Com ovo estrelado · batata frita e arroz</div>
+        </div>
+        <div class="entry-price">12,20 €</div>
+      </div>
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Bifinhos de Peru Natas e Cogumelos</div>
+          <div class="entry-desc">Redução de moscatel, natas e cogumelos · batata frita e arroz</div>
+        </div>
+        <div class="entry-price">17,50 €</div>
+      </div>
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Bifinhos de Peru Grelhados</div>
+          <div class="entry-desc">Com batata frita e salada</div>
+        </div>
+        <div class="entry-price">13,50 €</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="sopas" class="menu-panel">
+    <div class="menu-cols">
+      <div class="menu-entry">
+        <div class="entry-left">
+          <div class="entry-name">Sopa do Dia</div>
+          <div class="entry-desc">Receita variável, definida no dia</div>
+        </div>
+        <div class="entry-price">4,80 €</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider"><span class="divider-text">O que dizem de nós</span></div>
+
+<!-- CRÍTICAS -->
+<section id="criticas">
+  <div class="criticas-inner">
+    <p class="section-kicker">Clientes</p>
+    <h2 class="section-title">Críticas</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Bife à portuguesa top — 5 estrelas no atendimento, 5 estrelas na comida. O vinho da semana estava ótimo!"</p>
+        <div class="review-author">— Cliente Google</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Espetacular! Altamente recomendado. Comida de excelente qualidade, porções generosas e preço ótimo."</p>
+        <div class="review-author">— Jose A. · Guia Local</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Muito bom. Fomos super bem atendidos e o patrão foi super generoso. Um dos melhores de Mem Martins."</p>
+        <div class="review-author">— André H. · Guia Local</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider" style="margin-top:4rem;"><span class="divider-text">Como chegar</span></div>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contact-grid">
+    <div>
+      <p class="section-kicker">Visitar-nos</p>
+      <h2 class="section-title" style="margin-bottom:2.5rem;">Contacto</h2>
+      <div class="contact-block">
+        <div class="contact-label">Morada</div>
+        <div class="contact-value">Estr. Mem Martins 67<br>2725-079 Algueirão-Mem Martins</div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-label">Telefone</div>
+        <div class="contact-value"><a href="tel:215886552">21 588 6552</a></div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-label">Instagram</div>
+        <div class="contact-value"><a href="https://instagram.com/pregoemar" target="_blank">@pregoemar</a></div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-label">Horário</div>
+        <table class="hours-table">
+          <tr><td>Segunda a Domingo</td><td>12:00 – 22:00</td></tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <iframe
+        class="map-frame"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3!2d-9.3597!3d38.7826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1ecb1eeb59ded9%3A0xdb2e27a68e89a7cd!2sRestaurante%20Prego%20%26%20Mar!5e0!3m2!1spt!2spt!4v1700000000000"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Localização Prego & Mar">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Prego <span>& Mar</span></div>
+  <p>Estr. Mem Martins 67 · Algueirão-Mem Martins · 21 588 6552</p>
+  <p style="margin-top:1.5rem;">Site criado por <strong style="color:rgba(255,255,255,0.4)">Brothers Code</strong></p>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
